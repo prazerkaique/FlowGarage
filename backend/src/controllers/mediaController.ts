@@ -1,22 +1,35 @@
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 import AWS from 'aws-sdk';
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
-import { Media, Vehicle } from '../models';
+import { Media, Vehicle } from '../models/index.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 // Configuração do AWS S3 (ou compatível como MinIO)
-const s3 = new AWS.S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  endpoint: process.env.S3_ENDPOINT, // Para MinIO local
+const s3Config: AWS.S3.Types.ClientConfiguration = {
   s3ForcePathStyle: true, // Necessário para MinIO
   signatureVersion: 'v4'
-});
+};
+
+if (process.env.AWS_ACCESS_KEY_ID) {
+  s3Config.accessKeyId = process.env.AWS_ACCESS_KEY_ID;
+}
+if (process.env.AWS_SECRET_ACCESS_KEY) {
+  s3Config.secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+}
+if (process.env.S3_ENDPOINT) {
+  s3Config.endpoint = process.env.S3_ENDPOINT;
+}
+
+const s3 = new AWS.S3(s3Config);
 
 // Configuração do multer para upload temporário
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
     const uploadDir = path.join(__dirname, '../../uploads');
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });

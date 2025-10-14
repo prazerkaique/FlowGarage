@@ -1,5 +1,6 @@
-import { Request, Response, NextFunction } from 'express';
+import type { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import type { Secret } from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -31,15 +32,15 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
     return res.status(401).json({ error: 'Erro no formato do token' });
   }
 
-  const [scheme, token] = parts;
+  const [scheme, token] = parts as [string, string];
 
   if (!/^Bearer$/i.test(scheme)) {
     return res.status(401).json({ error: 'Formato de token inválido' });
   }
 
   try {
-    const secret = process.env.JWT_SECRET || 'default_secret';
-    const decoded = jwt.verify(token, secret) as TokenPayload;
+    const secret: Secret = process.env.JWT_SECRET ?? 'default_secret';
+    const decoded = jwt.verify(token, secret) as unknown as TokenPayload;
     
     req.user = decoded;
     

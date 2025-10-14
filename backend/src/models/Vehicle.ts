@@ -1,6 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
-import sequelize from '../config/database';
-import Garage from './Garage';
+import sequelize from '../config/database.js';
+import Garage from './Garage.js';
 
 class Vehicle extends Model {
   public id!: number;

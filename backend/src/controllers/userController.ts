@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
-import { User } from '../models';
+import { User } from '../models/index.js';
 
 export const createUser = async (req: Request, res: Response) => {
   try {

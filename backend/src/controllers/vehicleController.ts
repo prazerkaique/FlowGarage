@@ -1,8 +1,9 @@
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 import { Op } from 'sequelize';
-import { Vehicle, Media } from '../models';
+import { Vehicle, Media } from '../models/index.js';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
+import type { Secret } from 'jsonwebtoken';
 
 export const createVehicle = async (req: Request, res: Response) => {
   try {
@@ -83,9 +84,9 @@ export const generatePublicCatalogToken = async (req: Request, res: Response) =>
 export const getPublicCatalog = async (req: Request, res: Response) => {
   try {
     const { token } = req.params;
-    const secret = process.env.JWT_SECRET || 'default_secret';
+    const secret: Secret = process.env.JWT_SECRET ?? 'default_secret';
 
-    const decoded = jwt.verify(token, secret) as any;
+    const decoded = jwt.verify(token as string, secret as Secret) as unknown as any;
 
     if (decoded.type !== 'public_catalog') {
       return res.status(401).json({ error: 'Token inválido' });
@@ -105,9 +106,9 @@ export const getPublicCatalog = async (req: Request, res: Response) => {
 export const getPublicVehicles = async (req: Request, res: Response) => {
   try {
     const { token } = req.params;
-    const secret = process.env.JWT_SECRET || 'default_secret';
+    const secret: Secret = process.env.JWT_SECRET ?? 'default_secret';
 
-    const decoded = jwt.verify(token, secret) as any;
+    const decoded = jwt.verify(token as string, secret as Secret) as unknown as any;
 
     if (decoded.type !== 'public_catalog') {
       return res.status(401).json({ error: 'Token inválido' });
@@ -133,9 +134,9 @@ export const getPublicVehicles = async (req: Request, res: Response) => {
 export const getPublicVehicleById = async (req: Request, res: Response) => {
   try {
     const { token, id } = req.params;
-    const secret = process.env.JWT_SECRET || 'default_secret';
+    const secret: Secret = process.env.JWT_SECRET ?? 'default_secret';
 
-    const decoded = jwt.verify(token, secret) as any;
+    const decoded = jwt.verify(token as string, secret as Secret) as unknown as any;
 
     if (decoded.type !== 'public_catalog') {
       return res.status(401).json({ error: 'Token inválido' });

@@ -1,6 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
-import sequelize from '../config/database';
-import Vehicle from './Vehicle';
+import sequelize from '../config/database.js';
+import Vehicle from './Vehicle.js';
 
 class Media extends Model {
   public id!: number;
