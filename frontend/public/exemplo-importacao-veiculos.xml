@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vehicles>
+  <!-- Exemplo de veículo completo -->
+  <vehicle>
+    <!-- Informações Básicas (Obrigatórias) -->
+    <category>Carro</category>
+    <brand>Toyota</brand>
+    <model>Corolla XEi 2.0</model>
+    <year>2023</year>
+    <modelYear>2023</modelYear>
+    <price>95000</price>
+    
+    <!-- Informações Adicionais -->
+    <licensePlate>ABC-1234</licensePlate>
+    <color>Branco Pérola</color>
+    <mileage>15000</mileage>
+    <description>Veículo em excelente estado de conservação, único dono, todas as revisões em dia.</description>
+    <observations>Aceita financiamento. Valor à vista com desconto.</observations>
+    
+    <!-- Especificações Técnicas -->
+    <bodyType>Sedan</bodyType>
+    <doors>4</doors>
+    <transmission>Automático</transmission>
+    <steering>Elétrica</steering>
+    <fuel>Flex</fuel>
+    
+    <!-- Opcionais (separados por vírgula) -->
+    <optionalFeatures>Ar condicionado,Direção elétrica,Vidros elétricos,Travas elétricas,Airbag,ABS,Controle de estabilidade,Central multimídia,Câmera de ré</optionalFeatures>
+    
+    <!-- Características Especiais (true/false) -->
+    <armored>false</armored>
+    <auction>false</auction>
+    <ipvaPaid>true</ipvaPaid>
+    <licensingUpToDate>true</licensingUpToDate>
+    
+    <!-- Status do Veículo -->
+    <status>Disponível</status>
+    
+    <!-- Fotos (nomes dos arquivos no ZIP) -->
+    <photos>
+      <photo>toyota_corolla_001.jpg</photo>
+      <photo>toyota_corolla_002.jpg</photo>
+      <photo>toyota_corolla_003.jpg</photo>
+      <photo>toyota_corolla_004.jpg</photo>
+      <photo>toyota_corolla_005.jpg</photo>
+    </photos>
+    
+    <!-- Vídeos (opcional) -->
+    <videos>
+      <video>toyota_corolla_video.mp4</video>
+    </videos>
+  </vehicle>
+
+  <!-- Exemplo de veículo mínimo (apenas campos obrigatórios) -->
+  <vehicle>
+    <category>Moto</category>
+    <brand>Honda</brand>
+    <model>CB 600F Hornet</model>
+    <year>2020</year>
+    <modelYear>2020</modelYear>
+    <price>28000</price>
+    <color>Vermelha</color>
+    <mileage>12000</mileage>
+    <transmission>Manual</transmission>
+    <fuel>Gasolina</fuel>
+    <status>Disponível</status>
+    
+    <photos>
+      <photo>honda_hornet_001.jpg</photo>
+      <photo>honda_hornet_002.jpg</photo>
+    </photos>
+  </vehicle>
+
+  <!-- Exemplo de veículo com características especiais -->
+  <vehicle>
+    <category>Carro</category>
+    <brand>BMW</brand>
+    <model>X5 xDrive35i</model>
+    <year>2019</year>
+    <modelYear>2019</modelYear>
+    <price>180000</price>
+    <licensePlate>XYZ-9876</licensePlate>
+    <color>Preto</color>
+    <mileage>45000</mileage>
+    <description>SUV de luxo, blindado nível IIIA, procedência de leilão.</description>
+    
+    <bodyType>SUV</bodyType>
+    <doors>5</doors>
+    <transmission>Automático</transmission>
+    <steering>Elétrica</steering>
+    <fuel>Gasolina</fuel>
+    
+    <optionalFeatures>Ar condicionado,Direção elétrica,Vidros elétricos,Travas elétricas,Airbag,ABS,Controle de estabilidade,Central multimídia,Câmera de ré,GPS,Teto solar,Banco de couro,Rodas de liga leve,Xenon</optionalFeatures>
+    
+    <armored>true</armored>
+    <auction>true</auction>
+    <ipvaPaid>false</ipvaPaid>
+    <licensingUpToDate>false</licensingUpToDate>
+    
+    <status>Disponível</status>
+    
+    <photos>
+      <photo>bmw_x5_001.jpg</photo>
+      <photo>bmw_x5_002.jpg</photo>
+      <photo>bmw_x5_003.jpg</photo>
+      <photo>bmw_x5_004.jpg</photo>
+      <photo>bmw_x5_005.jpg</photo>
+      <photo>bmw_x5_006.jpg</photo>
+    </photos>
+  </vehicle>
+</vehicles>
+
+<!-- 
+INSTRUÇÕES PARA USO:
+
+1. CAMPOS OBRIGATÓRIOS:
+   - category: "Carro" ou "Moto"
+   - brand: Marca do veículo
+   - model: Modelo do veículo
+   - year: Ano de fabricação
+   - modelYear: Ano do modelo
+   - price: Preço (apenas números, sem pontos ou vírgulas)
+
+2. CAMPOS OPCIONAIS:
+   - licensePlate: Placa do veículo
+   - color: Cor do veículo
+   - mileage: Quilometragem (apenas números)
+   - description: Descrição detalhada
+   - observations: Observações adicionais
+   - bodyType: Sedan, Hatchback, SUV, Pickup, Conversível, Wagon, Coupé
+   - doors: Número de portas
+   - transmission: Manual, Automático, CVT
+   - steering: Hidráulica, Elétrica, Mecânica
+   - fuel: Flex, Gasolina, Etanol, Diesel, Híbrido, Elétrico
+   - optionalFeatures: Lista separada por vírgulas
+   - armored: true ou false
+   - auction: true ou false
+   - ipvaPaid: true ou false
+   - licensingUpToDate: true ou false
+   - status: Disponível, Vendido, Reservado
+
+3. FOTOS:
+   - Cada foto deve ter um nome único
+   - Formatos aceitos: .jpg, .jpeg, .png
+   - Os arquivos devem estar no ZIP de fotos
+   - Nomes devem corresponder exatamente aos especificados no XML
+
+4. VÍDEOS (opcional):
+   - Formatos aceitos: .mp4, .avi, .mov
+   - Os arquivos devem estar no ZIP junto com as fotos
+
+5. ESTRUTURA DO ZIP:
+   /fotos-veiculos.zip
+   ├── toyota_corolla_001.jpg
+   ├── toyota_corolla_002.jpg
+   ├── honda_hornet_001.jpg
+   ├── bmw_x5_001.jpg
+   └── toyota_corolla_video.mp4
+
+IMPORTANTE: 
+- Mantenha a codificação UTF-8 para caracteres especiais
+- Não use acentos nos nomes dos arquivos de foto
+- Teste sempre com poucos veículos antes de fazer importações grandes
+-->

@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Admin",
+    "email": "admin@garage.com",
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "name": "João Silva",
+    "email": "joao@email.com",
+    "role": "user"
+  }
+]
